@@ -22,10 +22,6 @@ const Create = () => {
     control,
   } = useForm<z.infer<typeof courseSchema>>({
     resolver: zodResolver(courseSchema),
-    defaultValues: {
-      title: "",
-      sections: [{ title: "", video: null as unknown as FileList }],
-    },
   });
 
   const { fields, append, remove } = useFieldArray({
