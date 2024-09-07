@@ -14,6 +14,7 @@ import { z } from "zod";
 const Create = () => {
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
+  const isBrowser = typeof window !== 'undefined';
 
   const {
     register,
@@ -24,7 +25,7 @@ const Create = () => {
     resolver: zodResolver(courseSchema),
     defaultValues: {
       title: "",
-      sections: [{ title: "", video: null as unknown as FileList }],
+      sections: [{ title: "", video: isBrowser ? (null as unknown as FileList) : undefined }],
     },
   });
 
