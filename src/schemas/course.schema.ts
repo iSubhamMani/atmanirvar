@@ -11,9 +11,11 @@ export const courseSchema = z.object({
     .refine((val) => !isNaN(val), {
       message: "Price must be a valid number",
     }),
-  thumbnail: z.instanceof(FileList).nullable()
-    .refine((value) =>{ if(!value) return false;
-       return value.length > 0})
+  thumbnail:  typeof window === "undefined"
+  ? z.any().nullable()
+  : z
+      .instanceof(FileList)
+    .refine((value) => value.length > 0)
     .refine((files) => {
       const file = files?.item(0);
       if (!file) return false;
@@ -23,11 +25,11 @@ export const courseSchema = z.object({
   sections: z.array(
     z.object({
       title: z.string().min(2, { message: "Title is required" }),
-      video: z.instanceof(FileList).nullable().optional()
-        .refine((value) => {
-          if (!value) return false;
-          return value.length > 0;
-        })
+      video: typeof window === "undefined"
+      ? z.any().nullable()
+      : z
+          .instanceof(FileList)
+        .refine((value) => value.length > 0)
         .refine((files) => {
           const file = files?.item(0);
           if (!file) return false;

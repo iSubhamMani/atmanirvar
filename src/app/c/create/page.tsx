@@ -14,7 +14,6 @@ import { z } from "zod";
 const Create = () => {
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
-  const isBrowser = typeof window !== "undefined";
 
   const {
     register,
@@ -49,8 +48,7 @@ const Create = () => {
     formData.append("title", data.title);
     formData.append("price", data.price.toString());
     formData.append("description", data.description);
-    if(data.thumbnail)
-    formData.append("thumbnail", data.thumbnail[0]);
+    if (data.thumbnail) formData.append("thumbnail", data.thumbnail[0]);
 
     data.sections.forEach((section, index) => {
       formData.append(`sections[${index}][title]`, section.title);
@@ -112,7 +110,9 @@ const Create = () => {
                   type="file"
                   accept="image/*"
                 />
-                <p className="text-error">{errors.thumbnail?.message}</p>
+                <p className="text-error">
+                  {errors.thumbnail?.message?.toString()}
+                </p>
               </div>
               <div className="col-span-1 md:col-span-2 space-y-2">
                 <label htmlFor="description">Description</label>
