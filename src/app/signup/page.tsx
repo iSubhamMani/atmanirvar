@@ -7,7 +7,7 @@ const Signup = () => {
     <div className="min-h-screen flex flex-col justify-center bg-base-100">
       <div className="p-4 md:p-6">
         <h1 className="my-4 text-primary text-center text-2xl lg:text-3xl font-bold">
-          Signup for Learn Mitra
+          Signup for आत्मनिर्भर ++
         </h1>
         <SignupForm />
         <p className="text-center text-base-content my-4 font-medium">

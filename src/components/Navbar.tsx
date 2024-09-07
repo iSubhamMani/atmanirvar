@@ -5,14 +5,14 @@ import Link from "next/link";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
-  const loc = ()=>{
-    window.location.href="https://sanlap.vercel.app/login"
-  }
+  const loc = () => {
+    window.location.href = "https://sanlap.vercel.app/login";
+  };
 
   return (
     <div className="bg-base-100 px-6 py-4 shadow-md flex justify-between gap-4 items-center">
       <div>
-        <h1 className="text-2xl font-bold text-secondary">Learn Mitra</h1>
+        <h1 className="text-2xl font-bold text-secondary">आत्मनिर्भर ++</h1>
       </div>
       <div className="flex gap-2">
         <Link href={"https://sanlap.vercel.app/login"}>
