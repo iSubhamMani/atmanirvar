@@ -11,9 +11,9 @@ export const courseSchema = z.object({
     .refine((val) => !isNaN(val), {
       message: "Price must be a valid number",
     }),
-  thumbnail: z
-    .instanceof(FileList)
-    .refine((value) => value.length > 0)
+  thumbnail: z.instanceof(FileList).nullable()
+    .refine((value) =>{ if(!value) return false;
+       return value.length > 0})
     .refine((files) => {
       const file = files?.item(0);
       if (!file) return false;

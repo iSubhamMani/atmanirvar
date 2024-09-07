@@ -25,7 +25,7 @@ const Create = () => {
     resolver: zodResolver(courseSchema),
     defaultValues: {
       title: "",
-      sections: [{ title: "", video: isBrowser ? undefined : undefined }],
+      sections: [{ title: "", video: undefined }],
     },
   });
 
@@ -49,6 +49,7 @@ const Create = () => {
     formData.append("title", data.title);
     formData.append("price", data.price.toString());
     formData.append("description", data.description);
+    if(data.thumbnail)
     formData.append("thumbnail", data.thumbnail[0]);
 
     data.sections.forEach((section, index) => {
