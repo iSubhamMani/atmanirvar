@@ -14,6 +14,7 @@ import { z } from "zod";
 const Create = () => {
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
+  const isBrowser = typeof window !== "undefined";
 
   const {
     register,
@@ -22,6 +23,10 @@ const Create = () => {
     control,
   } = useForm<z.infer<typeof courseSchema>>({
     resolver: zodResolver(courseSchema),
+    defaultValues: {
+      title: "",
+      sections: [{ title: "", video: isBrowser ? undefined : undefined }],
+    },
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -30,7 +35,7 @@ const Create = () => {
   });
 
   const createNewSection = () => {
-    append({ title: "", video: null as unknown as FileList });
+    append({ title: "", video: undefined });
   };
 
   const deleteSection = (index: number) => {
@@ -48,7 +53,8 @@ const Create = () => {
 
     data.sections.forEach((section, index) => {
       formData.append(`sections[${index}][title]`, section.title);
-      formData.append(`sections[${index}][video]`, section.video[0]);
+      if (section.video)
+        formData.append(`sections[${index}][video]`, section.video[0]);
     });
 
     try {

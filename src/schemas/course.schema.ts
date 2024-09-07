@@ -23,9 +23,11 @@ export const courseSchema = z.object({
   sections: z.array(
     z.object({
       title: z.string().min(2, { message: "Title is required" }),
-      video: z
-        .instanceof(FileList)
-        .refine((value) => value.length > 0)
+      video: z.instanceof(FileList).nullable().optional()
+        .refine((value) => {
+          if (!value) return false;
+          return value.length > 0;
+        })
         .refine((files) => {
           const file = files?.item(0);
           if (!file) return false;
