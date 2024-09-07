@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div>
+          <div className="p-4 bg-base-100">
+            <Link href={"http://localhost:5173"}>
+              <ArrowLeft className="w-7 h-7  text-secondary" />
+            </Link>
+          </div>
           <Toaster />
           {children}
         </div>
