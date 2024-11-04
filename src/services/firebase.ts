@@ -7,13 +7,13 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: "ed-tech-test-62e07.firebaseapp.com",
-  projectId: "ed-tech-test-62e07",
-  storageBucket: "ed-tech-test-62e07.appspot.com",
-  messagingSenderId: "1057786291201",
-  appId: "1:1057786291201:web:8a9d94beeaf1216b970c00",
+  authDomain: "atmanirvar-a8468.firebaseapp.com",
+  projectId: "atmanirvar-a8468",
+  storageBucket: "atmanirvar-a8468.appspot.com",
+  messagingSenderId: "803713359470",
+  appId: "1:803713359470:web:8746973514b403b0d9d07f",
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);

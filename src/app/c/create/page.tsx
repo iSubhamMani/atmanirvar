@@ -4,6 +4,7 @@ import { uploadCourse } from "@/actions/uploadCourse";
 import CourseSection from "@/components/CourseSection";
 import { courseSchema } from "@/schemas/course.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import { Loader, LoaderCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -57,13 +58,13 @@ const Create = () => {
     });
 
     try {
-      const res = await uploadCourse(formData);
-      if (res.status === "SUCCESS") {
-        toast.success(res.message);
+      const res = await axios.post("/api/course", formData);
+      if (res.data.status === "SUCCESS") {
+        toast.success(res.data.message);
         router.replace("/c/dashboard");
       }
-    } catch (error) {
-      toast.error("An error occurred");
+    } catch (error: any) {
+      toast.error(error.message);
     } finally {
       setSubmitting(false);
     }

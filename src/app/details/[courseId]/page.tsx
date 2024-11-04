@@ -54,7 +54,7 @@ const CourseDetails = () => {
 
     paymentDetails.set("amount", courseData.price);
     paymentDetails.set("cid", courseData.id);
-    paymentDetails.set("userId", courseData.createdBy.id);
+    paymentDetails.set("userId", session?.user.id as string);
     paymentDetails.set("mobileNumber", "1234567890");
 
     const redirect = await makePayment(paymentDetails);
