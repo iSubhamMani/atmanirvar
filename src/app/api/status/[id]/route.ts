@@ -17,12 +17,11 @@ export async function POST(req: NextRequest) {
   const transactionId = data.get("transactionId");
 
   const st =
-    `/pg/v1/status/${merchantId}/${transactionId}` +
-    process.env.NEXT_PUBLIC_SALT_KEY;
+    `/pg/v1/status/${merchantId}/${transactionId}` + process.env.SALT_KEY;
 
   const dataSha256 = sha256(st);
 
-  const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+  const checksum = dataSha256 + "###" + process.env.SALT_INDEX;
 
   const options = {
     method: "GET",

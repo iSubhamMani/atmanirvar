@@ -15,7 +15,7 @@ export const makePayment = async (formData: FormData) => {
   const transactionId = "Tr-" + Date.now();
 
   const payload = {
-    merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
+    merchantId: process.env.MERCHANT_ID,
     merchantTransactionId: transactionId,
     merchantUserId: "MUID-" + Date.now(),
     amount: (parseInt(amount) * 100).toString(),
@@ -32,10 +32,10 @@ export const makePayment = async (formData: FormData) => {
 
   const dataBase64 = Buffer.from(dataPayload).toString("base64");
 
-  const fullURL = dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
+  const fullURL = dataBase64 + "/pg/v1/pay" + process.env.SALT_KEY;
   const dataSha256 = sha256(fullURL);
 
-  const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+  const checksum = dataSha256 + "###" + process.env.SALT_INDEX;
   const UAT_PAY_API_URL =
     "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
 
