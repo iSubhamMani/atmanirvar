@@ -5,9 +5,6 @@ import Link from "next/link";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
-  const loc = () => {
-    window.location.href = "https://sanlap.vercel.app/login";
-  };
 
   return (
     <div className="bg-base-100 px-6 py-4 shadow-md flex justify-between gap-4 items-center">

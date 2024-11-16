@@ -21,11 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div>
-          <div className="p-4 bg-base-100">
-            <Link href={"http://localhost:5173"}>
-              <ArrowLeft className="w-7 h-7  text-secondary" />
-            </Link>
-          </div>
           <Toaster />
           {children}
         </div>

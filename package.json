@@ -16,6 +16,7 @@
     "cloudinary-video-player": "^2.1.0",
     "crypto-js": "^4.2.0",
     "firebase": "^10.13.1",
+    "html-to-image": "^1.11.11",
     "lucide-react": "^0.436.0",
     "next": "14.2.7",
     "next-auth": "^4.24.7",
